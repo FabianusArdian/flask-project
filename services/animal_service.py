@@ -1,6 +1,5 @@
 from db import database, animal_id_counter
 
-# Animal Management Functions
 def get_all_animals():
     return list(database['animals'].values())
 
@@ -9,9 +8,9 @@ def get_animal_by_id(animal_id):
 
 def add_animal(data):
     global animal_id_counter
-    animal_id_counter += 1  # Auto-increment ID
+    animal_id_counter += 1
     new_animal = {
-        "id": str(animal_id_counter),  # Convert to string to maintain consistency
+        "id": str(animal_id_counter),
         "species": data.get("species"),
         "age": data.get("age"),
         "gender": data.get("gender"),
