@@ -17,7 +17,7 @@ def get_animals():
 @animal_bp.route('/<id>', methods=['GET'])
 def get_animal(id):
     """
-    Retrieve a specific animal by id (Auto Increment).
+    Retrieve a specific animal by id.
     ---
     parameters:
       - name: id
@@ -71,7 +71,7 @@ def create_animal():
 @animal_bp.route('/<id>', methods=['PUT'])
 def update_animal_route(id):
     """
-    Update an existing animal by id (Auto Increment).
+    Update an existing animal by id.
     ---
     parameters:
       - name: id
@@ -108,7 +108,7 @@ def update_animal_route(id):
 @animal_bp.route('/<id>', methods=['DELETE'])
 def delete_animal_route(id):
     """
-    Delete an existing animal by id (Auto Increment).
+    Delete an existing animal by id.
     ---
     parameters:
       - name: id
