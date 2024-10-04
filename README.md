@@ -1,4 +1,4 @@
-# Zoo Management System
+# Safari Zoo Management System
 
 Welcome to the **Safari Zoo Management System**! This is a simple web-based application built with Flask to manage information about animals and employees at the zoo.
 Deployed on koyeb (https://interesting-robby-fans-ard-338584a9.koyeb.app/)
