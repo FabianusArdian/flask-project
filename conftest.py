@@ -1,5 +1,24 @@
-database = {
-    "animals": {
+import pytest
+from app import app as flask_app
+from db import database, animal_id_counter, employee_id_counter
+
+@pytest.fixture
+def app():
+    """Fixture to provide Flask app instance for testing."""
+    yield flask_app
+
+@pytest.fixture
+def client(app):
+    """Fixture to provide test client to make requests to the Flask app."""
+    return app.test_client()
+
+@pytest.fixture
+def reset_db():
+    """Fixture to reset the database and ID counters before each test."""
+    global animal_id_counter, employee_id_counter
+
+    # Reset animal database
+    database['animals'] = {
         "1": {
             "id": "1",
             "species": "Singa",
@@ -21,8 +40,10 @@ database = {
             "gender": "Laki",
             "special_requirements": "Perlu taman bambu dan tempat bermain"
         }
-    },
-    "employees": {
+    }
+
+    # Reset employee database
+    database['employees'] = {
         "1": {
             "id": "1",
             "name": "Pevita Piss",
@@ -48,7 +69,11 @@ database = {
             "schedule": "Mon-Fri, 8AM-4PM"
         }
     }
-}
 
-animal_id_counter = len(database['animals'])
-employee_id_counter = len(database['employees'])
+    animal_id_counter = len(database['animals'])
+    employee_id_counter = len(database['employees'])
+
+    yield
+
+    database['animals'] = {}
+    database['employees'] = {}
